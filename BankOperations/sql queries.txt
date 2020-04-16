@@ -1,0 +1,50 @@
+mysql> create database bankingdb;
+Query OK, 1 row affected (0.21 sec)
+
+mysql> use bankingdb;
+Database changed
+
+ create table accounts
+     (
+     accno int primary key,
+     accnm varchar (20),
+     acctype varchar (20),
+     balance double,
+     regdt date
+     );
+
+
+create table acctransactions
+     (
+          transno int primary key,
+    
+          transdt date,
+          accno int,
+          FOREIGN KEY(accno)REFERENCES
+          accounts(accno),
+          transactiontype varchar(20),
+         amount double
+          );
+
+create table users
+(
+userid varchar(20) primary key,
+pswd varchar(20) not null,
+usernm varchar(30),
+usertype varchar(10) default 'customer',
+userstatus varchar(10) default 'active'
+);
+
+
+create table userpersonal 
+(
+userid varchar(30) , 
+regdt date,
+age int,
+gender varchar(10),
+city varchar(20),
+mobile varchar(12),
+email varchar(50),
+secques varchar(75),
+answer varchar(30)
+);
